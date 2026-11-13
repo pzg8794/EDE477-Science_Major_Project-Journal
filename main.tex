@@ -1,120 +1,285 @@
 % !TEX program = pdflatex
-\documentclass[11pt]{article}
-\usepackage[margin=0.72in]{geometry}
+% EDE477 Science Major Project | portfolio-ready, source-grounded redesign
+\documentclass[10pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern,microtype,parskip,enumitem,fancyhdr,setspace,needspace,graphicx,float}
+\usepackage{lmodern,microtype,parskip,ragged2e,needspace,graphicx}
+\usepackage[margin=0.73in,headheight=15pt,headsep=0.19in,footskip=0.27in]{geometry}
 \usepackage[table]{xcolor}
-\usepackage{hyperref,tcolorbox}
+\usepackage{array,tabularx,booktabs,multicol,enumitem,hyperref,fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
 \definecolor{PrimaryRed}{HTML}{8B1E1E}
 \definecolor{DeepNavy}{HTML}{15324A}
-\definecolor{Addition}{HTML}{164F78}
-\definecolor{SoftBlue}{HTML}{E7F0F6}
-\hypersetup{colorlinks=true,urlcolor=DeepNavy,linkcolor=DeepNavy,pdftitle={Invisible Invaders},pdfauthor={Piter Zacari Garcia Bautista}}
-\setlength{\parindent}{0pt}\setlength{\parskip}{0.36em}\setstretch{1.02}
-\newcommand{\secx}[1]{\par\Needspace{5\baselineskip}\addvspace{0.10in}{\Large\bfseries\color{PrimaryRed}#1}\par\color{DeepNavy}\hrule\color{black}\vspace{0.08in}}
-\newcommand{\original}[1]{{\color{black}#1}}
-\newcommand{\revision}[1]{{\color{Addition}\textbf{REVISION:} #1}}
-\newtcolorbox{focusbox}{colback=SoftBlue,colframe=DeepNavy,boxrule=0.6pt,arc=2pt,left=7pt,right=7pt,top=6pt,bottom=6pt}
+\definecolor{Ink}{HTML}{283744}
+\definecolor{RevisionBlue}{HTML}{155F82}
+\definecolor{SoftBlue}{HTML}{E8F3F7}
+\definecolor{Pale}{HTML}{F4F6F7}
+\definecolor{SoftGray}{HTML}{D8E0E4}
+\definecolor{WarmGold}{HTML}{C88A29}
+\hypersetup{colorlinks=true,urlcolor=RevisionBlue,linkcolor=DeepNavy,
+ pdftitle={Invisible Invaders - Evidence, Story, and Fair Action},
+ pdfauthor={Piter Zacari Garcia Bautista},
+ pdfsubject={EDE477 Science Major Project - annotated instructional redesign}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.48em}
+\renewcommand{\arraystretch}{1.17}
+\setlist[itemize]{leftmargin=1.3em,itemsep=1pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=2pt,topsep=3pt}
+\newcommand{\eyebrow}[1]{{\bfseries\fontsize{8}{9}\selectfont\color{PrimaryRed}\MakeUppercase{#1}}\par\vspace{0.045in}}
+\newcommand{\pagetitle}[2]{\eyebrow{#1}{\LARGE\bfseries\color{DeepNavy}#2}\par\vspace{0.065in}{\color{PrimaryRed}\rule{\linewidth}{1.0pt}}\par\vspace{0.065in}}
+\newcommand{\minorhead}[1]{\par\Needspace{3\baselineskip}{\large\bfseries\color{DeepNavy}#1}\par\vspace{0.03in}}
+\newcommand{\blue}[1]{{\color{RevisionBlue}#1}}
+\newtcolorbox{originalbox}[1][]{enhanced,breakable,colback=white,colframe=SoftGray,boxrule=0.75pt,
+ fonttitle=\bfseries\footnotesize,coltitle=Ink,title={ORIGINAL SOURCE \enspace | \enspace VERBATIM EXCERPT},
+ left=8pt,right=8pt,top=5pt,bottom=6pt,#1}
+\newtcolorbox{revisionbox}[1][]{enhanced,breakable,colback=SoftBlue,colframe=RevisionBlue,boxrule=0.6pt,
+ fonttitle=\bfseries\footnotesize,coltitle=RevisionBlue,title={PROPOSED REDESIGN \enspace | \enspace BLUE},
+ left=9pt,right=9pt,top=5pt,bottom=7pt,#1}
+\newtcolorbox{notebox}[1][]{enhanced,breakable,colback=Pale,colframe=SoftGray,boxrule=0.55pt,
+ left=8pt,right=8pt,top=6pt,bottom=6pt,#1}
+\pagestyle{fancy}\fancyhf{}\lhead{\footnotesize\color{DeepNavy}\textbf{PITER GARCIA} \enspace / \enspace EDE477}
+\rhead{\footnotesize\color{DeepNavy}INVISIBLE INVADERS \enspace | \enspace SCIENCE MAJOR PROJECT}
+\cfoot{\footnotesize\color{DeepNavy}\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
 \begin{document}
-\begin{titlepage}\thispagestyle{empty}\begin{center}
-{\large University of Rochester\\ Warner School of Education}\\[0.18in]
-{\color{PrimaryRed}\rule{\textwidth}{1.5pt}}\\[0.2in]
-{\Huge\bfseries Invisible Invaders}\\[0.15in]
-{\LARGE Youth, Evidence, and Environmental Justice}\\[0.17in]
-{\Large EDE477 --- Science Major Project}\\[0.15in]
-\vfill\begin{focusbox}\centering\textbf{Guiding question}\\ How can tiny fragments move through our environment, and how can we investigate and respond fairly?\end{focusbox}\vfill
-\begin{tabular}{rl}\textbf{Student} & Piter Zacari Garcia Bautista \\
-\textbf{Course} & Teaching and Learning in the Content Areas \\
-\textbf{Instructor} & Amy Stell \\
-\textbf{Foundation} & Get Real! Science Camp --- Invisible Invaders\end{tabular}\vfill
-{\itshape Young people are investigators, model builders, and partners in change.}\par
-{\color{PrimaryRed}\rule{5in}{0.8pt}}\end{center}\end{titlepage}
-\pagestyle{fancy}\fancyhf{}\lhead{\small Piter Garcia}\rhead{\small EDE477 --- Invisible Invaders}\cfoot{\thepage}\setlength{\headheight}{14pt}
-\secx{Original Activity and Purpose}
-\textbf{Source.} This revision builds on the July 27, 2026 \href{https://docs.google.com/document/d/1jc_dSOKXVhSoSbvfbivXlgfYOxrrJ2L6KwbR7LQZCLc/edit}{Invisible Invaders Monday lesson}, co-planned and co-facilitated by Piter Garcia and Aastha in Get Real! Science Camp, and our post-camp implementation revision. The \textit{Monday Lesson: How Small? How Does It Move?} is the primary activity; this journal reproduces selected original language, and Appendix A includes the complete original Activity 2 text (the scale-and-wind investigation) in black. It proposes a focused redesign of that investigation and its supporting model-building sequence; the broader Monday lesson remains accessible at the source link. The original is not attributed to me alone.
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+{\large\bfseries\color{DeepNavy}UNIVERSITY OF ROCHESTER}\par
+{\small Warner School of Education \; / \; Teaching and Learning in the Content Areas}\par\vspace{0.16in}
+{\color{PrimaryRed}\rule{\linewidth}{1.5pt}}\par\vspace{0.22in}
+{\Huge\bfseries\color{DeepNavy}INVISIBLE\\[0.045in] INVADERS}\par\vspace{0.11in}
+{\LARGE\color{PrimaryRed}Evidence, Story, and Fair Action}\par\vspace{0.09in}
+{\normalsize EDE477 \; | \; Science Major Project \; | \; Annotated Instructional Redesign}
+\end{center}
+\vspace{0.13in}
+\begin{notebox}
+\centering\textbf{Our inquiry}\par
+How can tiny fragments move through our environment, what can our evidence actually show, and who should help decide what happens next?
+\end{notebox}
+\vspace{0.14in}
+\noindent\begin{minipage}[t]{0.49\textwidth}
+\includegraphics[width=\linewidth,height=1.80in,keepaspectratio]{assets/field-sampling-crop.jpg}\par
+{\footnotesize\color{Ink}\textbf{FIELD EVIDENCE} \enspace Sample the same way; label what was collected.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+{\footnotesize\bfseries\color{DeepNavy}A MODEL IS A CLAIM WE CAN REVISE}\par\vspace{0.15in}
+\begin{tikzpicture}[>=Latex,every node/.style={transform shape}]
+\node[draw=DeepNavy,fill=SoftBlue,rounded corners=3pt,minimum width=2.4in,minimum height=.38in,align=center,font=\scriptsize\bfseries] (s) at (0,0) {SOURCE + RELEASE};
+\node[draw=DeepNavy,fill=SoftBlue,rounded corners=3pt,minimum width=2.4in,minimum height=.38in,align=center,font=\scriptsize\bfseries] (t) at (0,-.77) {MOVE + ENCOUNTER};
+\node[draw=PrimaryRed,fill=Pale,rounded corners=3pt,minimum width=2.4in,minimum height=.38in,align=center,font=\scriptsize\bfseries] (u) at (0,-1.54) {EVIDENCE + UNKNOWN};
+\draw[->,thick,DeepNavy] (s)--(t);
+\draw[->,thick,PrimaryRed] (t)--(u);
+\end{tikzpicture}\par\vspace{0.13in}
+{\footnotesize\color{Ink}\textbf{MODEL REVISION} \enspace Paper models transport; they do not identify plastic or prove exposure.}
+\end{minipage}
+\vspace{0.08in}
+\begin{center}
+\renewcommand{\arraystretch}{1.20}
+\begin{tabularx}{0.97\textwidth}{>{\bfseries\color{DeepNavy}}p{1.08in}X}
+Prepared by & Piter Zacari Garcia Bautista \\
+Course & EDE477 --- Teaching and Learning in the Content Areas \\
+Foundation & Get Real! Science Camp, July 2026; co-planned and co-facilitated with Aastha \\
+Deliverable & Complete original selected activity, blue annotated redesign, one-page reading-based justification, and source record\\
+\end{tabularx}
+\end{center}
+\vspace{0.12in}
+\end{titlepage}
+\hypersetup{pageanchor=true}\pagenumbering{arabic}
 
-\textbf{Reading key:} \original{black = original source text (complete for Activity 2 in Appendix A, with selected original/base passages in the main sequence)}; \revision{blue = proposed additions and changes.} The written labels also distinguish the versions in grayscale. The original already contains justice and access supports; the redesign extends those strengths using later youth feedback and EDE477 readings.
-
-\begin{focusbox}\original{\textbf{Original student-facing question:} How small can plastic pieces get, how can moving air or water carry them, and what do we still not know?}\\[4pt]
-\original{\textbf{Original Gotta-Have 2 --- WATER:} Water transports materials.}\end{focusbox}
-
-\original{\textbf{Original Monday success:} Youth use Friday's observations, Aastha's scale and wind investigations, and one short source to begin a first-draft before $\rightarrow$ during $\rightarrow$ after model. Every idea or question may enter the draft. Monday is for making thinking visible, not completing the week-long explanation or grading ideas as right or wrong.}
-
-\revision{Invite students to begin with a locally meaningful observation, question, or example they choose. Preserve the original question as a possible starting point, then let the group decide what a model or investigation should help explain. Share the reason for each next activity: notice a puzzle $\rightarrow$ test a mechanism $\rightarrow$ revise an explanation $\rightarrow$ consider a fair response. No personal or family disclosure is required.}
-
-\secx{Revised Investigation}
-\revision{\textbf{Storyline launch --- students' evidence stories:} Before introducing the scale tools, invite each scholar to choose a Friday sampling photo, observation, method, or question and tell the evidence story in their own way: orally, by drawing or pointing, with a partner, through selected labels, or by passing and returning. Ask what the group still needs to explain and let that question motivate the scale and transport tests. After the model revision, return to the original story and ask what changed, what remained uncertain, and whose questions need to shape the next investigation. No personal or family disclosure is required.}
-\subsection*{1. Scale: What can our tools show?}
-\original{Show or measure 1 meter, 10 centimeters, 1 centimeter, 5 millimeters, and 1 millimeter. Ask scholars to choose measuring, holding, cutting, labeling, checking, observing, or pass-and-return roles.}
-
-\revision{Show the entire visual sequence while giving one direction at a time. Offer large-print and tactile measurement markers, shared manipulation, pointing, partner narration, or a seated observation route. Invite students to test the claim ``All microplastics are invisible'' using an appropriate source and the scale tools. Keep their initial reasoning visible and ask what the tools cannot resolve. Some microplastics are visible; small size alone does not identify a particle's material. Avoid timed competition and permit breaks or re-entry without penalty.}
-
-\subsection*{2. Transport: What happens when air moves?}
-\original{Place exactly 12 lightweight paper pieces inside the same taped starting box and mark one finish line. ``These paper pieces are a model for lightweight fragments. Move at least half across the boundary without touching them with your hands.''}
-
-\original{Record the starting count, how many pieces crossed the finish line, the direction they moved, and where pieces stopped. Count pieces that did not move too.}
-
-\revision{Students decide a question such as how fan distance or paper shape might affect movement, then choose one feasible comparison with the teacher. Record what is changed, what is kept similar, and the results for all pieces. Students may fan, observe, count, draw, photograph materials, dictate, or work with a partner; breathing is not required. Paper is a \emph{proxy}, not collected microplastic. Its movement illustrates a possible transport mechanism and cannot establish what happened at a particular site. Ask what a water-transport investigation would need to change.}
-
-\subsection*{3. From observation to a revisable model}
-\original{BEFORE --- SOURCE + RELEASE: What product or material contained plastic? How could smaller pieces or fibers leave it? DURING --- MOVE + ENCOUNTER: How could air, water, soil, or food transport it? What living thing might encounter it? AFTER --- EVIDENCE + UNKNOWN + FAIR ACTION: What supports an arrow? What remains possible or unknown? Who can reduce the pathway or share responsibility?}
-
-\revision{First, individuals or small groups create an initial before/during/after explanation. They can use drawing, movable labels, oral recording, writing, or a combination. Label each arrow \emph{observation}, \emph{possible pathway}, or \emph{question}. Next, each group selects an observation and explains what it supports and what it cannot establish. Peers offer an addition, a reasoned revision, or a question; the model creators decide how to respond. Preserve an initial and revised version so the change in reasoning remains visible. A shared model follows without requiring every group to erase uncertainty.}
-
-\begin{figure}[H]\centering\includegraphics[width=0.98\textwidth]{figures/camp-model.png}\caption{Existing Invisible Invaders sample model: products, release and movement, and possible exposure. This is an instructional representation, not a youth result or proof of a specific exposure pathway. Detection in a sample does not establish an exact route or a health effect.}\label{fig:model}\end{figure}
-
-\subsection*{4. Field evidence and fair action}
-\original{Begin with youth thinking from Friday. Do not begin by announcing the pathway. Give the challenge, wait, then follow up. Let scholars try, revise, and make mistakes before offering a hint.}
-
-\revision{If an approved field investigation is available, revisit the sample labels and site records using the same method at each chosen site. Figure~\ref{fig:sampling} provides the original visual sequence; teachers check site rules and current local procedures before use. Keep samples separate. A suspected particle is not confirmed plastic without appropriate identification. Ask whose questions and knowledge shape the inquiry, who bears responsibility for sources and infrastructure, and who should participate in decisions. Students choose a realistic response, such as a question for a local organization, a public explanation, or a proposal that considers producers and infrastructure as well as individual actions. No student must reveal a home location.}
-
-\begin{figure}[H]\centering\includegraphics[width=0.91\textwidth]{figures/sampling-steps.png}\caption{Existing camp sampling visual: choose, frame, scoop, seal, label, and map. The sequence supports traceability; the samples alone do not establish material identity, exposure, or harm.}\label{fig:sampling}\end{figure}
-
-\subsection*{5. Access and evidence in assessment}
-\revision{Use a common evidence standard across expression modes: each student identifies an observation, proposes and explains one relationship, distinguishes what remains unknown, and describes what evidence could revise the model. Offer a visual agenda, captions, time to process, alternative sensory routes, and a choice to pass and return. These are options, not assumptions about what any particular learner needs. Ask students how the supports worked and adapt them. If extending to fish-related evidence, preview the sensory demands, offer an equivalent non-fish route, and keep chemical handling adult-only.}
-
+% PAGE 1 - professional project brief
+\pagetitle{Project design brief / source and scope}{A good lesson becomes a stronger investigation}
+The original \textit{Invisible Invaders} lesson did not need to be replaced with somebody else's activity. Piter and Aastha had already developed a meaningful youth-led science experience: field sampling, a scale challenge, moving-air modeling, and a first-draft explanation. This EDE477 redesign focuses on one coherent, publicly available activity from that lesson: \textbf{Impossible Cut + Escape the Wind + Watch and Wonder}. It makes its original text inspectable and extends its strongest ideas using JuST, scientific modeling, uncertainty, and storytelling.
+\begin{notebox}
+\textbf{Source of the activity.} Original co-planned July 27, 2026 camp lesson: \href{https://docs.google.com/document/d/1jc_dSOKXVhSoSbvfbivXlgfYOxrrJ2L6KwbR7LQZCLc/edit}{Google Docs lesson} / \href{https://github.com/pzg8794/EDU486/blob/main/assignments/03-camp-unit-plan/monday-water-pathways-and-first-model.md}{free public EDU486 version}. Appendix A reproduces the \textbf{complete chosen Activity 2} (not the entire multi-hour Monday schedule). Original wording is in \textbf{black}; each new classroom move is in \blue{\textbf{blue}} and labeled. This is a prospective redesign, not a claim we already retaught it.
+\end{notebox}
+\minorhead{What the camp evidence changed in our thinking}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{DeepNavy}}p{1.24in}XX}
+\toprule
+Evidence from our camp & Teaching commitment & Concrete redesign decision \\
+\midrule
+Youth requested more investigating and building, less rushing & Protect reasoning time & One purposeful comparison replaces racing through activities \\
+Movement and varied sensory routes mattered & Access is designed, not earned & Seated, quiet, drawing, and partner routes share the same evidence standard \\
+Models and field samples had clear limitations & Treat uncertainty as scientific work & Separate observation, possible pathway, and unverified claim \\
+Youth generated questions and action ideas & Share intellectual authority & Let a youth question determine the comparison and next model revision \\
+\bottomrule
+\end{tabularx}
+\minorhead{Learning goals: what each learner should be able to show}
+\begin{enumerate}
+\item \textbf{Use scale and tools carefully:} explain why an observed fragment's size or appearance does not prove material identity.
+\item \textbf{Test one mechanism:} plan and document a comparison using 12 paper proxies and identify the limits of the model.
+\item \textbf{Make reasoning visible:} create or revise a source--movement--encounter model, with evidence, a possible explanation, and a question.
+\item \textbf{Consider justice:} identify whose questions, place-based knowledge, and decisions could guide a fair response.
+\end{enumerate}
+\begin{notebox}
+\textbf{Scope and safety.} Target: adaptable upper-elementary/middle-grades activity; a proposed 65-minute re-teach, \emph{not} the camp's original 38-minute activity block. No plastic collection, fish dissection, chemical handling, or health-risk inference is required for the redesigned lab. Teacher follows current classroom and site procedures.
+\end{notebox}
 \newpage
-\secx{Reflective Justification}
-Co-facilitating Invisible Invaders with Aastha gave me a concrete way to connect scientific thinking with the questions young people bring to a place. Our camp record describes youth sampling, using a moving-air model, revising shared explanations, and considering community action. It also records requests for more time to build and investigate, less rushing, more movement, and a sensory-safe alternative to the fish activity (Garcia \& Aastha, 2026). I treat those requests as guidance for the next design, not as proof that any one support worked for everyone.
 
-I chose the camp lesson because its before/during/after model already joins science with student questions. I want to make the connection between each activity and the developing explanation even clearer. Reiser et al. (2021, pp.~811--812, 818--820) describe a storyline in which learners can see why the next investigation follows from what they have figured out. Here, the scale challenge and paper-transport test each provide a reason to revisit a specific model arrow. Students then decide what to investigate or communicate next instead of completing isolated stations.
+% PAGE 2 - science sequencing
+\pagetitle{Facilitator guide / story before procedure}{Start with their evidence, not our answer}
+\begin{originalbox}
+``AA gives the Impossible Cut challenge first and lets everyone, including Piter, try before offering measuring steps or hints.''
+\end{originalbox}
+\begin{revisionbox}
+\textbf{Before a tool comes out, invite an evidence story.} Offer a Friday sample photo, a traceable site label, or a student-selected observation. Ask: ``What do you notice? What do you think might have happened? What would help us find out?'' Students can tell the story in a home language, draw an arrow, point, dictate to a partner, or pass and return. Their questions shape the comparison; no home or personal disclosure is required.
+\end{revisionbox}
+\minorhead{A teachable 65-minute sequence}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{DeepNavy}}p{0.63in}p{1.45in}X}
+\toprule
+Time & Investigation move & What students produce \\
+\midrule
+0--8 & Notice / tell the evidence story & An observation or authentic question, not a teacher-supplied conclusion \\
+8--22 & Impossible Cut / scale and tool limits & A defensible response to a false scale claim and an unresolved question \\
+22--42 & Escape the Wind / compare fairly & A plan, all 12 piece outcomes, and a limitation of the proxy \\
+42--57 & Build, challenge, revise a model & Two versions or a visible edit with evidence and unknown labels \\
+57--65 & Decide a fair next question or action & One evidence-based explanation and a question for further inquiry \\
+\bottomrule
+\end{tabularx}
+\minorhead{Preparation: low-floor tools, high-level questions}
+\begin{multicols}{2}
+\textbf{Materials}\par
+Rulers or meter strip, scrap paper and scissors, 12 uniform paper pieces per trial, reusable start/finish tape, cardboard fan, shared recording chart, optional magnifier, labeled student model cards, an available quiet/seated route, and the original source text.
+\columnbreak
+\textbf{Teacher's evidence boundary}\par
+The paper is a model for investigating how \emph{lightweight pieces} can move. It is not a microplastic sample. Neither its size nor its movement proves what is present in a shoreline sample, a food chain, or a person's body.
+\end{multicols}
+\begin{notebox}
+\textbf{Access does not reduce the inquiry.} Students may measure, count, question, model, label, draw, narrate, observe, move the fan, or coordinate a partner. The shared expectation is a reasoned explanation; rapid speech, standing, cutting, or English fluency is not the assessment.
+\end{notebox}
+\newpage
 
-The redesign also makes uncertainty a part of doing science. Krajcik and Merritt (2012, pp.~10--13) describe models as simplified representations that students develop and revise against evidence. Windschitl and Thompson (2013, pp.~65--68) use peer questions and explanations to make that revision visible. Paper moving in air can suggest a mechanism; a suspected particle is not automatically confirmed plastic. Neither observation proves an exposure route or health effect. I want students to be able to name both what they learned and the next evidence they need.
+% PAGE 3 - scale
+\pagetitle{Investigation 1 / scale and measurement}{How small is small enough to fool our eyes?}
+\begin{originalbox}
+``Compare 1 m, 10 cm, 1 cm, 5 mm, 1 mm, and 1 micrometer, then ask what classroom tools can and cannot make or verify.''
+\end{originalbox}
+\begin{revisionbox}
+\textbf{A claim worth disagreeing with.} Show an intentionally false statement: \emph{All microplastics are invisible.} Students choose AGREE / NOT SURE / DISAGREE, including pointing, writing, or a quiet partner route. Invite the evidence that could change their position. With a trustworthy scale source, explain that particles called microplastics are generally smaller than 5 mm; some can be seen and some need magnification. Visibility does not identify material.
+\end{revisionbox}
+\minorhead{Student investigation card / keep with the station}
+\begin{notebox}
+\textbf{Question:} What can a classroom ruler tell us---and what can it not tell us?\par
+\textbf{Try:} Construct or mark 1 m, 10 cm, 1 cm, 5 mm, and 1 mm. Ask whether paper and scissors could reliably produce or verify 1 micrometer. Stop the cutting attempt when the limitation is clear.\par
+\textbf{Explain:} Which size can you verify? What evidence would identify whether a suspected particle was plastic?\par
+\textbf{Revise:} After the source and peer comparison, change one claim or label and explain why.
+\end{notebox}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \x/\label in {0/{1 m},1.6/{10 cm},3.2/{1 cm},4.8/{5 mm},6.4/{1 mm}} {
+ \draw[fill=SoftBlue,draw=DeepNavy,line width=.8pt] (\x,0) rectangle ++(1.2,.33);
+ \node[font=\scriptsize,anchor=north] at (\x+.6,-.08) {\label};
+}
+\node[font=\scriptsize,align=center,text=Ink] at (3.8,.78) {CONCEPTUAL SCALE LADDER --- \textbf{NOT TO SCALE}};
+\end{tikzpicture}
+\end{center}
+\minorhead{Teacher move: make the scientific boundary visible}
+\textbf{Observed:} ``Our tools showed us the length of the paper strips.'' \quad
+\textbf{Possible:} ``Some environmental fragments could be smaller than we can resolve here.'' \quad
+\textbf{Not established:} ``This paper or sand grain is microplastic.''
+\begin{notebox}
+\textbf{JuST and identity:} Who gets treated as a ``good scientist'' if the activity rewards whoever cuts fastest? Instead, notice questioning, careful measuring, identifying tool limitations, and changing a claim. Offer multiple languages and representations without assuming what any particular student needs.
+\end{notebox}
 
-JuST asks whose knowledge shapes the investigation and how science can support meaningful action. Luehmann et al. (2024, pp.~334--340, 347--350) connect local experiences and multilingual expertise with inquiry and community action. I extend that orientation by asking students to examine responsibility across product design, infrastructure, monitoring, and policy, without assigning a predetermined answer. Our EDE477 water investigation reinforces the same need to keep a result distinct from a claim about cause or safety.
+\minorhead{Learner note: one claim I changed}
+\begin{notebox}
+\small\textbf{I first thought:} \hrulefill\par\vspace{0.08in}
+\textbf{My evidence or tool limit:} \hrulefill\par\vspace{0.08in}
+\textbf{Now I think / still wonder:} \hrulefill
+\end{notebox}
+\newpage
 
-My Puzzle Plan/EQUITAS lens connects this work to overlapping identities and access. Language, culture, migration, neurodivergence, disability, health, and prior experiences may shape participation together. In my teaching, a quiet, seated, visual, partner-supported, or delayed response can make reasoning available without lowering the expectation for evidence. Our post-camp reflection reminds me to invite feedback and change the design rather than infer a learner's needs from a label. I want students to see themselves as people whose questions and explanations can shape science and fair action.
+% PAGE 4 - transport
+\pagetitle{Investigation 2 / fair comparison}{When air moves, what can our model actually say?}
+\begin{originalbox}
+``AA then leads Escape the Wind (see Monday teaching slides, Moving-Air Transport Model) with exactly 12 paper proxies inside one taped starting box and one finish line. Without touching the pieces, scholars choose cardboard, a clipboard, notebook, or paper fan and try to move them.''
+\end{originalbox}
+\begin{revisionbox}
+\textbf{Students decide what to compare.} Keep the 12-piece count, start box, finish line, and observation rule. Choose \emph{one} variable the group can test fairly, such as fan distance or shape, while keeping other conditions as similar as feasible. Ask whose question the comparison is answering. Invite prediction and disagreement before testing; count the pieces that did not move, too.
+\end{revisionbox}
+\minorhead{Re-usable recording sheet / no invented results}
+{\small
+\begin{tabularx}{\linewidth}{p{0.73in}X>{\centering\arraybackslash}p{0.81in}>{\centering\arraybackslash}p{0.81in}>{\centering\arraybackslash}p{0.86in}}
+\toprule
+Trial & Condition / what changed? & Crossed finish & Moved, not crossed & Did not move \\
+\midrule
+A & \rule{2.0in}{.3pt} & \rule{.48in}{.3pt} & \rule{.48in}{.3pt} & \rule{.48in}{.3pt} \\[.12in]
+B & \rule{2.0in}{.3pt} & \rule{.48in}{.3pt} & \rule{.48in}{.3pt} & \rule{.48in}{.3pt} \\[.12in]
+\bottomrule
+\end{tabularx}}
+\begin{notebox}
+\textbf{Validation before interpreting:} In each trial, crossed + moved/not crossed + did not move = \textbf{12}. Describe location and direction separately. If the starting setup changes unintentionally, do not treat a difference as evidence for the intended variable.
+\end{notebox}
+\minorhead{Three questions that promote reasoning}
+\begin{enumerate}
+\item What pattern did you actually record, including pieces that stayed put?
+\item Could another factor explain the difference? What would you keep the same if you tried again?
+\item If paper moves in air, which arrows in a plastic pathway model become plausible, and which still need environmental evidence?
+\end{enumerate}
+\begin{revisionbox}
+\textbf{Model honesty is the result, not an apology.} Paper is a proxy for lightweight fragments. This test can support reasoning about a possible transport mechanism; it cannot identify microplastic particles, measure actual air transport in the community, determine a particular exposure pathway, or establish health effects.
+\end{revisionbox}
 
-\newpage\secx{References and Source Notes}
-Garcia, P., \& Aastha. (2026). \textit{Invisible Invaders: Post-camp implementation revision addendum}. EDU486 camp work. The related Monday lesson, linked below, was co-planned.
+\minorhead{Learner note: does our evidence warrant the claim?}
+\begin{notebox}
+\small\textbf{We changed:} \hrulefill\par\vspace{0.06in}
+\textbf{We observed:} \hrulefill\par\vspace{0.06in}
+\textbf{We still cannot conclude:} \hrulefill
+\end{notebox}
+\newpage
 
-\href{https://docs.google.com/document/d/1jc_dSOKXVhSoSbvfbivXlgfYOxrrJ2L6KwbR7LQZCLc/edit}{Invisible Invaders Monday lesson and activity sequence}. (2026). Get Real! Science Camp. Figure~\ref{fig:model} and Figure~\ref{fig:sampling} are existing camp instructional visuals; their labels and scientific limitations are preserved.
+% PAGE 5 - modeling justice
+\pagetitle{Synthesis / modeling, uncertainty and JuST}{Let their ideas change the model}
+\begin{revisionbox}
+\textbf{Return to the original evidence story.} Ask students to put their \emph{before} explanation next to a \emph{revised} one. A peer can offer a question, additional evidence, or a reasoned challenge. The group making the model decides what to retain, revise, or mark unknown. Authority is not reserved for the person holding the marker.
+\end{revisionbox}
+\begin{center}
+\begin{tikzpicture}[node distance=.27in,>=Latex]
+\node[draw=DeepNavy,fill=SoftBlue,rounded corners=3pt,minimum width=1.88in,minimum height=.69in,align=center,font=\small\bfseries] (a) {BEFORE\\Source + release};
+\node[right=0.33in of a,draw=DeepNavy,fill=SoftBlue,rounded corners=3pt,minimum width=1.88in,minimum height=.69in,align=center,font=\small\bfseries] (b) {DURING\\Movement + encounter};
+\node[right=0.33in of b,draw=PrimaryRed,fill=Pale,rounded corners=3pt,minimum width=1.88in,minimum height=.69in,align=center,font=\small\bfseries] (c) {AFTER\\Evidence + fair action};
+\draw[->,thick,DeepNavy] (a)--(b);
+\draw[->,thick,DeepNavy] (b)--(c);
+\end{tikzpicture}
+\end{center}
+\minorhead{Every arrow needs a label}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{DeepNavy}}p{1.23in}X}
+\toprule
+OBSERVATION & Something the class measured, recorded, or saw (e.g., the paper crossed a boundary). \\
+POSSIBLE PATHWAY & A proposed explanation supported by a mechanism, but not yet verified at a real site. \\
+QUESTION / UNKNOWN & A missing identification, source, comparison, or effect that the model cannot yet show. \\
+\bottomrule
+\end{tabularx}
+\minorhead{Justice without forcing a predetermined answer}
+\begin{notebox}
+\textbf{Who gets to investigate?} Whose knowledge of local places, languages, transportation, products, drains, or shorelines might improve the question? No student must share a private address or family story.\par
+\textbf{Who can act?} Invite students to choose a scientifically responsible next move: request better local evidence, explain tool limits to a public audience, ask about runoff or infrastructure, or propose an action that shares responsibility across industries, institutions, and communities.
+\end{notebox}
+\minorhead{Assessment: same reasoning, several ways to show it}
+\begin{enumerate}
+\item Identify one \textbf{observation} with a traceable source or measurement.
+\item Explain one \textbf{relationship or mechanism} using the comparison or source.
+\item Name at least one \textbf{uncertainty} and what evidence could change the model.
+\item Tell the \textbf{revised story} by drawing, speaking, labeling, writing, partnering, or another agreed route; optionally propose a fair next question or action.
+\end{enumerate}
+{\footnotesize\color{Ink}Teacher checks for evidence-based reasoning, not performance speed, vocal volume, handwriting, or English fluency. This design uses our original camp model logic, not new participant data.}
 
-Krajcik, J., \& Merritt, J. (2012). Engaging students in scientific practices: What does constructing and revising models look like in the science classroom? \textit{Science and Children}, 10--13.
+\begin{notebox}
+\textbf{Learner model revision:} I revised the arrow from \hrulefill\ to \hrulefill\ because \hrulefill.\par
+\textbf{Next evidence question:} \hrulefill
+\end{notebox}
+\newpage
 
-Luehmann, A., Zhang, Y., Boyle, H., Tulbert, E., Merliss, G., \& Sullivan, K. (2024). Toward a justice-centered ambitious teaching framework: Shaping ambitious science teaching to be culturally sustaining and productive in a rural context. \textit{Journal of Research in Science Teaching, 61}, 319--357. \url{https://doi.org/10.1002/tea.21917}
+% PAGE 6 reflection
+\input{sections/reflection.tex}
+\newpage
 
-Reiser, B. J., Novak, M., McGill, T. A. W., \& Penuel, W. R. (2021). Storyline units: An instructional model to support coherence from the students' perspective. \textit{Journal of Science Teacher Education, 32}(7), 805--829. \url{https://doi.org/10.1080/1046560X.2021.1884784}
+% PAGE 7 appendix source
+\input{sections/original-activity.tex}
+\newpage
 
-Windschitl, M., \& Thompson, J. J. (2013). The modeling toolkit: Making student thinking visible with public representations. \textit{The Science Teacher}, 63--69.
-
-\textit{Water Test Investigation}. (2026). Collaborative EDE477 course activity. \url{https://docs.google.com/document/d/1GpqZl8MVNCpH4dKFZKeCQcLOGir0535jPK4ayxFyxEs/edit}
-
-\textbf{Process disclosure.} OpenAI Codex assisted in organizing the co-facilitated camp lesson, post-camp record, EDE477 readings, existing instructional visuals, and Piter's stated priorities into this LaTeX revision. Source passages are labeled, and proposed changes are identified separately. The source camp documents and team attribution remain intact.
-
-\newpage\secx{Appendix A --- Complete Original Lab/Activity Text}
-\textit{Source: Activity 2, \emph{Impossible Cut + Escape the Wind + watch and wonder}, from the co-planned July 27, 2026 \href{https://docs.google.com/document/d/1jc_dSOKXVhSoSbvfbivXlgfYOxrrJ2L6KwbR7LQZCLc/edit}{Invisible Invaders Monday lesson}. The same lesson is available free in the \href{https://github.com/pzg8794/EDU486/blob/main/assignments/03-camp-unit-plan/monday-water-pathways-and-first-model.md}{public EDU486 archive}. Source wording and sequence are reproduced below, not reinterpreted; black indicates original text. The blue revisions elsewhere are proposed changes, not claimed as previously implemented.}\par\medskip
-\begingroup\small
-\textbf{Activity 2 - Impossible Cut + Escape the Wind + watch and wonder (9:32-10:10)}\par
-\noindent\original{AA gives the Impossible Cut challenge first and lets everyone, including Piter, try before offering measuring steps or hints. Compare 1 m, 10 cm, 1 cm, 5 mm, 1 mm, and 1 micrometer, then ask what classroom tools can and cannot make or verify. Show the intentionally inaccurate claim ``All microplastics are invisible.'' Place AGREE / NOT SURE / DISAGREE placards along a continuum from strongly agree to strongly disagree. Standing or moving is one route; pointing to or holding a placard while seated, asking a partner to place a marker, or passing and returning are equally valid. Name needed evidence and revise after the scale source: some microplastics are visible and others require magnification. The false sentence is a claim to test, not an answer to copy.}\par\medskip
-\noindent\original{AA then leads Escape the Wind (see Monday teaching slides, Moving-Air Transport Model) with exactly 12 paper proxies inside one taped starting box and one finish line. Without touching the pieces, scholars choose cardboard, a clipboard, notebook, or paper fan and try to move them. Give each person one equal-length turn. Breath is optional, never required. Name the paper as a transport model, not microplastic evidence.}\par\medskip
-\noindent\original{By 10:00, record the 12-piece starting count, how many crossed the finish line, the direction moved, where pieces stopped, and pieces that did not move. This is the transport pattern. Count all 12 pieces during cleanup. Scholars choose one vetted short video together, then speak, write, draw, point, dictate, or pass. Scholars may record their own exact Wonder Wall questions; AA or PG offers to scribe only when wanted.}\par\medskip
-\noindent\original{Protect the 10:10-10:20 snack, movement, seated, or quiet reset.}\par\medskip
-\noindent\original{Evidence of success: scholars explain that smaller scales may require different tools, moving air transported the paper model, and neither classroom model proves that a particle is plastic or establishes every environmental route.}\par\medskip
-\noindent\original{Keep the Friday souvenir, scale sequence, and Wonder Wall visible through the break. Preview: ``Next Piter will help us combine our evidence and questions into one model.''}\par\medskip
-\noindent\original{``Our cut paper and wind activity are models: each shows some things and leaves others out. A globe can show relative locations but not stars or exact travel distances. After the break, we will collect every scholar idea and question without judging it right or wrong; we can revise during the week.''}\par\medskip
-\noindent\original{Puzzle piece: [SCIENCE + EVIDENCE + JUSTICE/ACTION] Combine Friday's two places, the scale and transport models, one short source, and youth questions in a power-aware before/during/after consensus model.}\par\medskip
-\noindent\original{PICRAT: Interactive / Transform}\par\medskip
-\endgroup
+% PAGE 8 source notes
+\input{sections/sources.tex}
 \end{document}
