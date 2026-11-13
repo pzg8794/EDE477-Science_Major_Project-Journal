@@ -61,18 +61,20 @@ How can tiny fragments move through our environment, what can our evidence actua
 \end{notebox}
 \vspace{0.14in}
 \noindent\begin{minipage}[t]{0.49\textwidth}
+\vspace{0pt}% Align the photo and diagram columns at their upper edges.
 \includegraphics[width=\linewidth,height=1.80in,keepaspectratio]{assets/field-sampling-crop.jpg}\par
 {\footnotesize\color{Ink}\textbf{FIELD EVIDENCE} \enspace Sample the same way; label what was collected.}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.48\textwidth}
-{\footnotesize\bfseries\color{DeepNavy}A MODEL IS A CLAIM WE CAN REVISE}\par\vspace{0.15in}
-\begin{tikzpicture}[>=Latex,every node/.style={transform shape}]
+\vspace{0pt}% Do not align the diagram with the photo's bottom baseline.
+{\footnotesize\bfseries\color{DeepNavy}A MODEL IS A CLAIM WE CAN REVISE}\par\vspace{0.07in}
+\noindent\hfill\begin{tikzpicture}[>=Latex,every node/.style={transform shape}]
 \node[draw=DeepNavy,fill=SoftBlue,rounded corners=3pt,minimum width=2.4in,minimum height=.38in,align=center,font=\scriptsize\bfseries] (s) at (0,0) {SOURCE + RELEASE};
-\node[draw=DeepNavy,fill=SoftBlue,rounded corners=3pt,minimum width=2.4in,minimum height=.38in,align=center,font=\scriptsize\bfseries] (t) at (0,-.77) {MOVE + ENCOUNTER};
-\node[draw=PrimaryRed,fill=Pale,rounded corners=3pt,minimum width=2.4in,minimum height=.38in,align=center,font=\scriptsize\bfseries] (u) at (0,-1.54) {EVIDENCE + UNKNOWN};
+\node[draw=DeepNavy,fill=SoftBlue,rounded corners=3pt,minimum width=2.4in,minimum height=.38in,align=center,font=\scriptsize\bfseries] (t) at (0,-.66in) {MOVE + ENCOUNTER};
+\node[draw=PrimaryRed,fill=Pale,rounded corners=3pt,minimum width=2.4in,minimum height=.38in,align=center,font=\scriptsize\bfseries] (u) at (0,-1.32in) {EVIDENCE + UNKNOWN};
 \draw[->,thick,DeepNavy] (s)--(t);
 \draw[->,thick,PrimaryRed] (t)--(u);
-\end{tikzpicture}\par\vspace{0.13in}
+\end{tikzpicture}\hfill\par\vspace{0.08in}
 {\footnotesize\color{Ink}\textbf{MODEL REVISION} \enspace Paper models transport; they do not identify plastic or prove exposure.}
 \end{minipage}
 \vspace{0.08in}
